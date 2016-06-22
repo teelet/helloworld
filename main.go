@@ -15,10 +15,9 @@ type item struct {
 
 func main()  {
 	fmt.Println("helloworld")
-	db, err := sql.Open("mysql", "test:123456@tcp(139.129.36.196:3306)/test?charset=utf8")
+	db, err := sql.Open("mysql", "test:123456@tcp(www.teelet.com:3306)/test?charset=utf8")
 	defer db.Close()
 	checkErr(err)
-
 	err = db.Ping()
 	checkErr(err)
 	stmt, err := db.Prepare("select * from test limit 10")
