@@ -1,5 +1,11 @@
 package main
 
+/*
+#cgo LDFLAGS: -L./so -lsotest
+#include "./so/sotest.h"
+*/
+import "C"
+
 import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
@@ -29,6 +35,10 @@ func main()  {
 		rows.Scan(&(i.id), &(i.name))
 		fmt.Println(strconv.Itoa(i.id) + " : " + i.name)
 	}
+
+	//测试动态链接库
+	sum := C.add(1, 2)
+	fmt.Printf("sum = %d \n", sum)
 }
 
 func checkErr(err error){
